@@ -13,7 +13,6 @@ class Stream:
     """Stream of data.
 
     It has an internal deque object.
-    Only references the minimum number of data elements to make the cluster.
 
     """
     def __init__(self):
