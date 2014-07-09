@@ -9,4 +9,4 @@ setuptools.setup(
     author='Roberto Abdelkader Martínez Pérez',
     author_email='robertomartinezp@gmail.com',
     url='https://github.com/nilp0inter/streamdiffer',
-    packages=['streamdiffer'])
+    py_modules=['streamdiffer'])
