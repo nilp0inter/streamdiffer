@@ -16,7 +16,7 @@ def test_import():
 def test_instantiate_empty():
     from streamdiffer import Cluster
     cluster = Cluster()
-    assert cluster.streams == []
+    assert cluster.streams == set()
 
 
 def test_instantiate_nolist():
@@ -42,7 +42,7 @@ def test_match(cluster, stream_x, stream_y, stream_z):
     assert cluster.match(stream_x)  # ["a"] == ()
 
     # If it's not empty only match if math all streams
-    cluster.streams.append(stream_x)  # (["a"])
+    cluster.streams.add(stream_x)  # (["a"])
     assert cluster.match(stream_y)  # [] == (["a"])
 
     stream_y.append("b")  # ["b"]
@@ -51,7 +51,7 @@ def test_match(cluster, stream_x, stream_y, stream_z):
     stream_z.append("a")  # ["a"]
     assert cluster.match(stream_z)  # ["a"] == (["a"])
 
-    cluster.streams.append(stream_z)  # (["a"], ["a"])
+    cluster.streams.add(stream_z)  # (["a"], ["a"])
     assert not cluster.match(stream_y)  # ["b"] != (["a"], ["a"])
 
     # If any of the cluster's stream changes the cluster must be updated

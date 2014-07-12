@@ -4,7 +4,7 @@ import setuptools
 
 setuptools.setup(
     name='StreamDiffer',
-    version='0.0.1',
+    version='0.0.2',
     description='Compare and clusterize multiple data streams.',
     author='Roberto Abdelkader Martínez Pérez',
     author_email='robertomartinezp@gmail.com',

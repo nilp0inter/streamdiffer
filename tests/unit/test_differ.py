@@ -41,5 +41,7 @@ def test_differ_update_stream(stream_x, stream_y, stream_z):
     assert len(differ.clusters) == 2
 
     assert stream_x in differ.clusters[0].streams
+    assert len(differ.clusters[0].streams) == 1
     assert stream_y in differ.clusters[1].streams
     assert stream_z in differ.clusters[1].streams
+    assert len(differ.clusters[1].streams) == 2

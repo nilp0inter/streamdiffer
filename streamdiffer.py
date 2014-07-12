@@ -8,6 +8,8 @@ Compare and clusterize multiple data streams.
 # pylint: disable=I0011, W0212
 from collections import deque
 
+__all__ = ['Stream', 'Cluster', 'Differ']
+
 
 class Stream:
     """Stream of data.
@@ -39,13 +41,13 @@ class Cluster:
     """A cluster of streams."""
     def __init__(self, streams=None):
         if streams is None:
-            self.streams = []
+            self.streams = set()
         elif not isinstance(streams, list):
             raise ValueError("streams attribute must be a list")
         elif not all(isinstance(s, Stream) for s in streams):
             raise ValueError("streams attribute must contain Stream objects")
         else:
-            self.streams = streams
+            self.streams = set(streams)
 
     def match(self, stream):
         """
@@ -72,7 +74,7 @@ class Differ:
                 else:
                     # An existing cluster match. Add this stream.
                     if other_cluster.match(stream):
-                        other_cluster.streams.append(stream)
+                        other_cluster.streams.add(stream)
                         new_cluster = other_cluster
                         break
             else:
